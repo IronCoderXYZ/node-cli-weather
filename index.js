@@ -1,4 +1,5 @@
 const minimist = require('minimist');
+const error = require('./utils/error');
 
 module.exports = () => {
   const args = minimist(process.argv.slice(2));
@@ -21,6 +22,6 @@ module.exports = () => {
     case 'forecast':
       return require('./commands/forecast')(args);
     default:
-      return console.log(`"${command}" is not a valid command.`);
+      return error(`"${command}" is not a valid command.`);
   }
 };
